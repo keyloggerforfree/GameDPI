@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schemalist gettext-domain="gamedpi">
+  <schema id="org.gnome.shell.extensions.gamedpi" path="/org/gnome/shell/extensions/gamedpi/">
+    <key name="game-app-ids" type="as">
+      <default>[]</default>
+      <summary>Game window identifiers</summary>
+      <description>
+        WM_CLASS values (as reported by Meta.Window.get_wm_class) that
+        identify a window as a game, in addition to any fullscreen window
+        matched by treat-fullscreen-as-game.
+      </description>
+    </key>
+    <key name="treat-fullscreen-as-game" type="b">
+      <default>true</default>
+      <summary>Treat fullscreen windows as games</summary>
+      <description>
+        Automatically apply the game scale to any fullscreen window,
+        regardless of whether its WM_CLASS is in the game list.
+      </description>
+    </key>
+    <key name="game-scale" type="d">
+      <default>1.0</default>
+      <summary>Scale factor to use while a game is focused</summary>
+      <description>
+        The display scale factor applied while a game window is
+        focused. 1.0 is 100%.
+      </description>
+    </key>
+    <key name="only-scale-active-monitor" type="b">
+      <default>false</default>
+      <summary>Only rescale the monitor showing the game</summary>
+      <description>
+        When true, only the logical monitor the game window is on has
+        its scale changed; every other monitor keeps its original
+        scale. When false, all monitors are rescaled together.
+      </description>
+    </key>
+    <key name="ignored-app-ids" type="as">
+      <default>['firefox', 'firefox-esr', 'org.mozilla.firefox', 'chromium', 'chromium-browser', 'google-chrome', 'org.chromium.Chromium', 'brave-browser', 'com.brave.Browser', 'mpv', 'vlc', 'org.videolan.VLC']</default>
+      <summary>Windows never treated as games</summary>
+      <description>
+        WM_CLASS values that are never treated as a game, even while
+        fullscreen. Takes priority over treat-fullscreen-as-game and
+        game-app-ids, so it's meant for things like browsers and video
+        players where fullscreen doesn't mean "game".
+      </description>
+    </key>
+  </schema>
+</schemalist>

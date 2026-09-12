@@ -1,0 +1,12 @@
+{
+    "uuid": "gamedpi@keyloggerforfree",
+    "name": "GameDPI",
+    "description": "Sets display scaling to 100% while a game window is focused, and restores the previous scaling as soon as it loses focus.",
+    "shell-version": ["45", "46", "47", "48", "49", "50"],
+    "url": "",
+    "settings-schema": "org.gnome.shell.extensions.gamedpi",
+    "gettext-domain": "gamedpi",
+    "author": "keyloggerforfree",
+    "version": 1,
+    "version-name": "1.0"
+}
