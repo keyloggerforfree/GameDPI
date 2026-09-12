@@ -89,6 +89,15 @@ gnome-extensions prefs gamedpi@keyloggerforfree
   non-overlapping layouts (rows/columns/grids) — an unusual arrangement
   it can't reproduce safely is left unchanged and logged rather than
   guessed at.
+- A game can end up rendering at the wrong resolution if it decides on
+  one before this extension ever sees its window (e.g. a cached setting
+  or a startup-time query) and doesn't reconsider it afterward — this
+  can't be fixed at the extension level. If a game does this, switch to
+  100% scale yourself right before launching it so it saves the correct
+  resolution from the start;
+  [Display Configuration Switcher](https://extensions.gnome.org/extension/7281/display-configuration-switcher/)
+  is handy for this since it binds a quick keyboard shortcut (Ctrl+;) to
+  change scaling.
 
 ## Technical details
 
