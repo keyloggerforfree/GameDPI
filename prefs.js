@@ -224,27 +224,34 @@ export default class GameDpiPreferences extends ExtensionPreferences {
         if (!windows || windows.length === 0)
             return;
 
-        const popover = new Gtk.Popover();
-        const listBox = new Gtk.ListBox({selection_mode: Gtk.SelectionMode.NONE});
+        const dialog = new Adw.Dialog({
+            title: _('Choose a Window'),
+            content_width: 440,
+            content_height: 520,
+        });
+
+        const listBox = new Gtk.ListBox({
+            selection_mode: Gtk.SelectionMode.NONE,
+            margin_top: 12, margin_bottom: 12, margin_start: 12, margin_end: 12,
+        });
         listBox.add_css_class('boxed-list');
 
         for (const [wmClass, title] of windows) {
             const row = new Adw.ActionRow({title, subtitle: wmClass, activatable: true});
             row.connect('activated', () => {
                 addRow.set_text(wmClass);
-                popover.popdown();
+                dialog.close();
             });
             listBox.append(row);
         }
 
-        const scroller = new Gtk.ScrolledWindow({
-            child: listBox,
-            max_content_height: 300,
-            propagate_natural_height: true,
-        });
-        popover.set_child(scroller);
-        popover.set_parent(anchorButton);
-        popover.connect('closed', () => popover.unparent());
-        popover.popup();
+        const scroller = new Gtk.ScrolledWindow({child: listBox, vexpand: true});
+
+        const toolbarView = new Adw.ToolbarView();
+        toolbarView.add_top_bar(new Adw.HeaderBar());
+        toolbarView.set_content(scroller);
+
+        dialog.set_child(toolbarView);
+        dialog.present(anchorButton);
     }
 }
