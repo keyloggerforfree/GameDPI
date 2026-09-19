@@ -70,6 +70,8 @@ Open settings with:
 gnome-extensions prefs gamedpi@keyloggerforfree
 ```
 
+To remove it, run `./uninstall.sh`.
+
 ## Known limitations
 
 - **X11 sessions are not supported** — see Technical details.
