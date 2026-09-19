@@ -2,7 +2,10 @@
 
 A GNOME Shell extension that switches display scaling to 100% (or
 another scale you pick) while a game window is focused, and restores
-the exact scaling from before as soon as it loses focus.
+the exact scaling from before as soon as it loses focus. This avoids
+the blurry, zoomed-in, way-above-native-resolution rendering that
+fractional scaling otherwise causes for most fullscreen games on GNOME
+Wayland.
 
 Wayland only — see "Known limitations" below.
 
